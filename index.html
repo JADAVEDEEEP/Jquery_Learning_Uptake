@@ -316,8 +316,56 @@ $(document).ready(function(){
   });
 });
 
-  
-  
+  ////////////////////////////////////////////////////////FILTER METHOD/////////////////////////////////////////////////////////////////////
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      const value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  $(document).ready(function(){
+    $("button").click(function(){
+      $.post("demo_test_post.asp",
+      {
+        name: "Donald Duck",
+        city: "Duckburg"
+      },
+      function(data,status){
+        alert("Data: " + data + "\nStatus: " + status);
+      });
+    });
+  });
+////////////////////////////////////////////////////////////////AJAX FIRST API CALLUSING JQUERY//////////////////////////////////
+  $.ajax({
+    type: 'GET',
+    url: ('https://fakestoreapi.com/products'),
+    dataType: 'json',
+    success: function(data) {
+      const html = data.map(product => {
+        return `
+          <div class="col-sm-4">
+              <img src="${product.image}" style="width:100px" "alt="${product.title}">
+            <h6><p class="${product.url}">${product.title}</p></h6>
+            <p class="text-muted">Price: $${product.price}</p>
+            <p class="text-muted">Description: ${product.description}</p>
+            <p class="text-muted">Category: ${product.category}</p> 
+            <p class="text-muted">Rating: ${product.rating.rate} (${product.rating.count} reviews)</p>
+          
+          </div>
+        `;
+      }).join('');
+      $(".mypanel").html(`
+        <div class="container mt-5">
+          <div class="row">
+            ${html}
+          </div>
+        </div>
+      `);
+    }
+  });
+
     </script>
 </head>
 <body>
@@ -526,6 +574,48 @@ $(document).ready(function(){
   <button class="btn btn-success mt-3" id="btn18">Get Method</button>
   <p id="rax"></p>
   <button class="btn btn-success mt-3" id="btn19">Load method</button>
- 
+  <div class="container  mt-5">
+    <h2>Filterable Table</h2>
+<p>Type something in the input field to search the table for first names, last names or emails:</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<table>
+  <thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>john@example.com</td>
+  </tr>
+  <tr>
+    <td>Mary</td>
+    <td>Moe</td>
+    <td>mary@mail.com</td>
+  </tr>
+  <tr>
+    <td>July</td>
+    <td>Dooley</td>
+    <td>july@greatstuff.com</td>
+  </tr>
+  <tr>
+    <td>Anja</td>
+    <td>Ravendale</td>
+    <td>a_r@test.com</td>
+  </tr>
+  </tbody>
+</table>
+  
+  </div>
+  <h2 class="text-center mt-2">Post Method</h2>
+  <button class="btn btn-primary mt-3">Add Data</button>
+
+  <div class="mypanel"></div>
 </body>
 </html>

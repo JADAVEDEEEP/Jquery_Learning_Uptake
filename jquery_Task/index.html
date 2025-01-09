@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <script>
+       $(document).ready(function () {
+            //as per the R&D Iused chaning process in jquery channing would be multiple jquery methods should be work on single statment
+            //i create index as n varible and pass the defualt value 1 so as per the we alredy have started index 
+            let index = 1;      
+            $("#adds").click(function (e) {
+                //just like js i used the event and prevendufalt to prevet the default submit when we click
+                e.preventDefault(); 
+                //clone : use the clone method to create the shallow copy of that form
+                //attritbite:this will get the div attiributes id we pass to the index 
+                //children:here my parent is div and child is span 
+                //text:text will be add the index to the every time new shallow copy created 
+                //end : it would be useful when chaning we are using 
+                //appendto:append to we used to store our shallow copy insdie the anther container on click event 
+                $("#is1").clone().attr("id", "is1" + index).children(".index").text(index).end().appendTo(".container");
+                index++;
+            });
+        
+           //used the on method to attach the event handlers 
+            $(".container").on("click", ".delete", function (e) {
+                e.preventDefault();
+                   //here we used the closeast method to will delete cloeast form element 
+                if ($(".clonable").length > 1) {
+                    $(this).closest(".clonable").remove();
+                } else {
+                 alert("cant delete last item")
+                
+                }
+            });
+        });
+    </script>
+    <div class="container mt-5 "style="height:230px;">
+        <div id="is1" class="clonable">
+            <span class="index bg-light fw-bold">Form 1</span>
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                  </div>
+                
+            <button class="delete btn btn-danger mt-3 ">Delete</button>
+        
+        </div>
+        <button id="adds" class="btn btn-success mt-3">Add user multiple</button> 
+    </div>
+   
