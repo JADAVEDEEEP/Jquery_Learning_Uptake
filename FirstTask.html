@@ -31,17 +31,26 @@
                 e.preventDefault();
                    //here we used the closeast method to will delete cloeast form element 
                 if ($(".clonable").length > 1) {
-                    $(this).closest(".clonable").remove();
+                    $(this).closest(".clonable",).remove();
+                    
                 } else {
                  alert("cant delete last item")
                 
                 }
             });
-        });
+            $(document).ready(function () {
+                //here i disabled the subbmit button using prop were always retruns seleted elments and values 
+                $("#bdds").prop("disabled", true); 
+            });
+        })            
     </script>
-    <div class="container mt-5 "style="height:230px;">
+    <div class="container mt-3 "style="height:230px;">
         <div id="is1" class="clonable">
-            <span class="index bg-light fw-bold">Form 1</span>
+            <span class="index  bg-light fw-bold">Form 1</span>
+            <div class="d-flex">
+ 
+                <button class="delete btn btn-danger mt-3 ms-auto">Delete</button>
+              </div>
             <form>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
@@ -56,10 +65,9 @@
                     <label for="exampleInputPassword1">Confirm Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
                   </div>
-                
-            <button class="delete btn btn-danger mt-3 ">Delete</button>
-        
+                  <button id="bdds" class="btn btn-success mt-3">Submit</button> 
         </div>
         <button id="adds" class="btn btn-success mt-3">Add user multiple</button> 
+       
     </div>
    

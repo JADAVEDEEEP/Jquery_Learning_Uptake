@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Form Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+       
+       //here i implemented the table row table varible and created one table 
+        const table = $("<table id='result-table' class='table border mt-5 text-center'></table>");
+        //here i used to two append content one for the table header and one for the table content 
+        table.append("<thead><tr><th>Id</th><th>Name</th><th>Age</th><th>Email</th><th>Password</th><th>Actions</th></tr></thead>");
+        table.append("<tbody></tbody>");
+        //morover we insert the this table in to the body so it would be visble now in browser 
+        $("body").append(table);
+        let index = 1;
+    
+        $(document).ready(function() {
+            //Select input values and elments 
+            $("#submit").click(function() {
+                const Name = $("#name").val();
+                const Age = $("#age").val();
+                const email = $("#email").val();
+                const password = $("#password").val();
+              
+                //Empty Fields Validation 
+
+                if (Name === "" || Age === "" || email === "" || password === "") {
+                    alert("Fill in all the details");
+                } else {
+                    //here we insert the our content inside the row and it will add rhe multiple data since 
+                    //we are storing inside the row so it will create the new row everytime with new data 
+                    let row = $("<tr></tr>");
+                    row.append($("<td></td>").text(index));
+                    row.append($("<td></td>").text(Name));
+                    row.append($("<td></td>").text(Age));
+                    row.append($("<td></td>").text(email));
+                    row.append($("<td></td>").text(password));
+                     //here we add one more field actions were eidt and delete would be stored and alos delete button would be created 
+                    const actions = $("<td></td>");
+                    const deleteBtn = $("<button class='btn btn-danger btn-sm mx-1'>Delete</button>");
+    
+                     //here append the deleted utton inside the actions field and row will append the acction field witj delete button
+                     //and third inside the table body we pass the content with actions field and delete button everytime 
+                    actions.append(deleteBtn);
+                    row.append(actions);
+                    $("#result-table tbody").append(row);
+    
+                    index++;
+     
+                     //after the sucfully submit the data i cleared rhe input fields 
+                  
+                    $("#name").val("");
+                    $("#age").val("");
+                    $("#email").val("");
+                    $("#password").val("");
+    
+                  //i use the delete button as fucntuon and perofm rhe remove nemthod to delete the specefied row 
+                    deleteBtn.click(function() {
+                        row.remove();
+                    });
+                }
+            });
+    
+          
+      
+        });
+    </script>
+    <div class="container mt-5" style="height:230px;">
+        <form id="userForm">
+           
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" placeholder="Enter Age">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter Password">
+            </div>
+            <button type="button" class="btn btn-success mx-1 mt-3" id="submit">Submit</button>
+       
+           
+        </form>
+        <P id="result"></P>
+    </div>
+
+</body>
+</html>
