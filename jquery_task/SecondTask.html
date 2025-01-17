@@ -10,8 +10,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <div class="container mt-5" style="height:230px;">
-    <form id="userForm">
+  <div class="container mt-5 py-5" style="height:230px;">
+    <form id="userForm" >
       <h1 class="text-center">AJAX CRUD WITH JQUERY</h1>
       <div class="form-group mt-5">
         <label for="name">Title</label>
@@ -57,6 +57,7 @@
 let id = 21;
 $(document).ready(function() {
   $("#submit").click(function() {
+    
     const title = $("#title").val();
     const price = $("#price").val();
     const description = $("#description").val();

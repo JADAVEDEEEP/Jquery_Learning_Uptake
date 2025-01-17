@@ -1,0 +1,12 @@
+body {
+    height: 20%;
+   background-color: aliceblue;
+    background-size: cover;     
+    background-position: center;   
+    background-attachment: fixed;   
+  }
+  
+  form{
+    background-color: white
+
+  }
