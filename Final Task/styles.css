@@ -1,0 +1,9 @@
+.custom-toggler {
+  border-color: #007bff; 
+}
+
+.custom-toggler:hover {
+  background-color: #007bff;
+  border-color: #0056b3;
+}
+

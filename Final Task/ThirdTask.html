@@ -20,7 +20,7 @@
         <i class="bi bi-file-plus-fill"></i>
     </button>
  
-    <form id="userFormTemplate" class="d-none index mt-4 shadow-lg">
+    <form id="userFormTemplate" class="d-none index mt-4 ">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control title" placeholder="Enter Title Name">
@@ -62,6 +62,7 @@
 
     //declare product id globally within start id of 1
     let productId = 1;
+
     $(document).ready(function () {
 
         /*on click ek navu form generate thase using clone method method channing no use karyo che 
@@ -72,15 +73,22 @@
         */ 
      
 
-     
+       
 
-     $("#addForm").click(function() {
-         const newForm = $("#userFormTemplate").clone().removeClass("d-none").removeAttr("id");
-         $(".container").append(newForm);
-         newForm.find("#cancel").click(function(){ 
-             newForm.hide() 
-         })
-     });
+        let index = 1;
+
+        $("#addForm").click(function() {
+            const newForm = $("#userFormTemplate").clone().removeClass("d-none").removeAttr("id");
+            newForm.find("h1").text(`Form ${index}`);
+            const newIndex = `<p>Product Form : ${index}</p>`;
+            newForm.prepend(newIndex);
+            $(".container").append(newForm);
+            newForm.find("#cancel").click(function(){ 
+                newForm.hide(); 
+                index--; 
+            });
+            index++;
+        });
      
 
       

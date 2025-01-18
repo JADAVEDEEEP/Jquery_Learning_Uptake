@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX Form Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="text-center mt-5 text-muted">Jquery Animation Method</h1>
+  <div class="container d-flex justify-content-center mt-5 shadow-sm">
+    
+    <div class="d-flex flex-row bd-highlight mb-3">
+        <div class="p-2 bd-highlight">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="deep5.png" alt="Card image cap" style="height:170px">
+                <div class="card-body">
+                  <p class="card-text">Sasti Vande Bharat Train.</p>
+                </div>
+              </div>
+        </div>
+        <div class="p-2 bd-highlight">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="deep 6.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">A1</p>
+                </div>
+              </div>
+        </div>
+        <div class="p-2 bd-highlight"><div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="deep 6.jpg" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">B1</p>
+            </div>
+          </div></div>
+          <div class="p-2 bd-highlight"><div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="deep 6.jpg" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">C1</p>
+            </div>
+          </div></div>
+      </div>
+      
+</div>
+<div class="container mt-5 text-center">
+<button type="button" class="btn btn-primary mx-2" id="btn1">Rajkot-Jamnagar</button>
+<button type="button" class="btn btn-secondary mx-2"id="btn2">Ahemadabad-USA</button>
+<button type="button" class="btn btn-success mx-2"id="btn3">Mumbai-LA</button>
+<button type="button" class="btn btn-danger mx-2"id="btn4">Keral-Jammu</button>
+</div>  
+<button type="button" class="btn btn-secondary mx-2"id="btn5">USA-Ahemadabad</button>
+  <script>
+
+    $(document).ready(function(){
+        $("#btn1").click(function(){
+            $("div").animate({right:'250'})
+        })
+    })
+    $(document).ready(function(){
+        $("#btn2").click(function(){
+            $("div").animate({
+            height: 'toggle',
+        })
+        })
+    })
+    $(document).ready(function(){
+        $("#btn3").click(function(){
+            $("div").animate({right:'250',
+            opacity: '0',
+            height: '150px',
+            width: '150px'})
+        })
+    })
+    $(document).ready(function(){
+        $("#btn4").click(function(){
+            $("div").animate({left:'250'})
+        })
+    })
+   
+    
+$("#btn5").on('click', function() {
+  loop();
+  setInterval(loop,2100);
+  function loop() {
+    $("div").stop().animate({
+      left: '250px'
+    }, 2000, 'linear', function() {
+      setTimeout(loop, 50);
+    });
+  }
+});
+
+  </script>
+</body>
+</html>
